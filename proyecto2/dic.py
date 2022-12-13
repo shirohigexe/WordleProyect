@@ -55,5 +55,3 @@ for i in archivo:
         con += 1
 archivo.close()
 
-
-#print(random.choice(palabras_8))
