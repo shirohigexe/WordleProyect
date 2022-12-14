@@ -56,7 +56,7 @@ def det_color(intento, j):
     letra = intento[j]
     if letra == ganador[j]:
         return verde
-    elif letra in ganador:
+    elif letra in ganador_conjunto:
         return amarillo
 
         ########### para que detecte los numero repetidos ################# NOTA: no funciona bien
@@ -104,17 +104,17 @@ while animacion_presentacion:
             animacion_presentacion = False
         if evento.type == pygame.KEYDOWN:
         #para cerar la ventana
-            if evento.key == pygame.K_ESCAPE:
+            if evento.key == pygame.K_KP_ENTER or evento.key == pygame.K_SPACE:
                 animacion_presentacion = False
-            if evento.key == pygame.K_4:
+            if evento.key == pygame.K_4 or evento.key == pygame.K_KP4:
                 dificultad = 4
-            if evento.key == pygame.K_5:
+            if evento.key == pygame.K_5 or evento.key == pygame.K_KP5:
                 dificultad = 5
-            if evento.key == pygame.K_6:
+            if evento.key == pygame.K_6 or evento.key == pygame.K_KP6:
                 dificultad = 6
-            if evento.key == pygame.K_7:
+            if evento.key == pygame.K_7 or evento.key == pygame.K_KP7:
                 dificultad = 7
-            if evento.key == pygame.K_8:
+            if evento.key == pygame.K_8 or evento.key == pygame.K_KP8:
                 dificultad = 8
             if evento.key == pygame.K_BACKSPACE:
                     if len(entrada)  > 0:
@@ -130,6 +130,10 @@ print(dificultad)
 
 #Creacion de la plabra para ganar
 ganador = ganador_dic(dificultad)
+ganador_conjunto = set()
+
+for letra in ganador:
+    ganador_conjunto.add(letra)
 
 #creacion de la ventana del juego
 ventana = pygame.display.set_mode((900,700))
